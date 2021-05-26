@@ -4,6 +4,7 @@ const port = 8000;
 app.use(express.static('./assets'));
 //should be before the routes
 const expressLayouts = require('express-ejs-layouts');
+const db = require('./config/mongoose');
 app.use(expressLayouts);
 // Putting the styles and scripts from pages to the correct place in the layout file
 app.set('layout extractStyles', true);
