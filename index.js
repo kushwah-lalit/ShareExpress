@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+app.use(express.static('./assets'));
 //should be before the routes
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
