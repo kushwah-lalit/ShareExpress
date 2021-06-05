@@ -38,7 +38,11 @@ module.exports.signIn = function(req, res){
         title: "ShareExpress | Sign In"
     })
 }
-
+// sign out
+module.exports.signOut = function(req, res){
+    res.clearCookie('user_id');
+    return res.redirect('/users/sign-in');
+}
 // // get the sign up data
 module.exports.create = function(req, res){
     // TODO later
