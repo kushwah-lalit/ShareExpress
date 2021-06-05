@@ -48,6 +48,25 @@ module.exports.create = function(req, res){
 
 
 // // sign in and create a session for the user
-// module.exports.createSession = function(req, res){
-//     // TODO later
-// }
+module.exports.createSession = function(req, res){
+    // find user
+    User.findOne({email: req.body.email},function(err,user){
+        if(err){
+            console.log('Error while Signing In the user');
+            return;
+        }
+        if(user){
+            // user found
+            if(user.password!=req.body.password){
+                // password does not match
+                return res.redirect('back');
+            }
+            // matches
+            res.cookie('user_id',user.id);
+            return res.redirect('/users/profile');
+        }else{
+            // user not found
+            return res.redirect('back');
+        }
+    });
+}
