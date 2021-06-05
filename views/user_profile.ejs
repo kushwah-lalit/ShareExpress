@@ -1,2 +1,31 @@
-<link rel="stylesheet" href="/css/users_profile.css">
-<h1>ShareExpress / <%= title %></h1>
+<!-- <link rel="stylesheet" href="/css/users_profile.css">
+<h1>ShareExpress / <%= title %></h1> -->
+<div id="body" style="margin-top:8rem;">
+    <div id="name" style="margin:5rem; width:50%;">
+        <span class="TextinNav" style="font-size: 10rem;">Share</span><br><span class="TextinNav" style="font-weight:700; color:#ee1c24 ;font-size: 10rem;">Express</span>
+    </div>
+    <form style="margin-top: 5rem;width:30%;height:350px">
+        <!-- for the task tile -->
+            <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="titles">
+                        E-Mail ID
+                    </label>
+                </div>
+                <div class="Block" style=" padding: 4px 10px;color: lightgray;line-height: 1.6;font-size: 1.2rem;font-weight: 500;">
+                    <%=user.email%>
+                </div>  
+            </div>
+            <!-- for the task description -->
+            <div id="taskdescription">
+                <div class="headstyle">
+                    <label for="Describe">
+                        Name
+                    </label>
+                </div>
+                <div class="Block" style=" padding: 4px 10px;color: lightgray;line-height: 1.6;font-size: 1.2rem;font-weight: 500;">
+                    <%=user.name%>
+                </div>
+            </div>
+    </form>  
+</div>
