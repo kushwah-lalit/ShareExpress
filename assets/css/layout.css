@@ -1,4 +1,353 @@
+/* body styling */
 body{
-    margin:0px;
-    text-align:center ;
+	background:#0e1013;
+    position:relative; 
+}
+/*.html{
+    scroll-behavior: smooth;
+}*/
+/*navbar*/
+nav{
+	background-color:#21262c;
+	position:fixed;
+	margin:0px; 
+	margin-left:-8px;
+	padding:10px 30px;
+	top:0%;
+	height:5%;
+	width:100%;
+	border-top:3px #ee1c24 solid;
+	box-shadow:0 4px 5px #000000;
+    background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.7)) ;
+    z-index:5;  
+}
+nav div{
+	display:inline-block;
+	vertical-align:text-top;
+}
+#LOGO i{
+	font-size:3rem;
+	color:#ee1c24;
+}
+.TextinNav{
+    font-size:1.2rem;
+    color:white;
+    text-decoration:none;
+    font-family:Sans-serif; 
+    font-weight:400;
+    letter-spacing:0.1rem; 
+    padding:2px;     
+}
+/*Style of body means making it flex to store the two forms side by side*/
+#body{
+	display:flex;
+	width:94%;
+    margin-left:3%;  
+	/* height:90vh; */
+	flex-direction:row;
+	justify-content:space-around;
+    flex-wrap: wrap;
+    margin-top:8vh;
+}
+/* left form parent div*/
+#content{
+	display:flex;
+	width:57%;
+    height:90Vh;
+	flex-direction:column;
+	justify-content:space-around;
+	align-items:center;
+    overflow-y:auto;
+    box-shadow:0 5px 5px -5px rgba(0,0,0,0.8) inset; 
+}
+#content::-webkit-scrollbar {
+    display: none;
+}
+#content{
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+@media screen and (max-width:1000px){
+     #body{
+        width:96%;
+        margin-left:2%;  
+     }  
+}
+@media screen and (max-width:700px){
+     #body{
+        width:98%;
+        margin-left:1%;  
+     }
+}
+/* form in the left to take the input */
+form{
+    display:flex;
+	width:100%;
+    /* height:100%; */
+	flex-direction:column;
+	justify-content:space-between;
+	align-items:center;
+}
+/* to show the inputs of the left form elevated */
+.boxes{
+    width:98%;
+    height:auto;
+    display:flex;
+	flex-direction:row;
+    flex-wrap: wrap;
+	justify-content:space-between;
+    margin-bottom:2rem ;
+    /* border-bottom:2px #21262c solid; */
+}
+/* below is styling of each input of the form */
+/* tasktitle */
+#tasktitle{
+    /* height:20%; */
+    width:100%;
+    display:flex;
+    flex-direction:column;
+	/* justify-content:space-between; */
+    align-items:flex-start;
+    box-shadow:0 0 10px 1px #000000;
+    padding:0.5rem;
+    box-sizing:border-box;
+    border-radius:15px;  
+    /*background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.6)) ;*/ 
+    background-color:rgba(33,38,44,0.2);
+    margin-bottom:2rem ;
+}
+/* category */
+#categories{
+    /* height:20%; */
+    width:48%;
+    display:flex;
+    flex-direction:column;
+	/* justify-content:space-between; */
+    align-items:flex-start;
+    box-shadow:0 0 10px 1px #000000;
+    padding:0.5rem;
+    box-sizing:border-box;
+    border-radius:15px;  
+    /*background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.6)) ;*/ 
+    background-color:rgba(33,38,44,0.2);
+}
+/* date */
+#dates{
+    /* height:20%; */
+    width:48%;
+    display:flex;
+    flex-direction:column;
+	/* justify-content:space-between; */
+    align-items:flex-start;
+    box-shadow:0 0 10px 1px #000000;
+    padding:0.5rem;
+    box-sizing:border-box;
+    border-radius:15px;  
+    /*background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.6)) ;*/ 
+    background-color:rgba(33,38,44,0.2);
+}
+/* decription */
+#taskdescription{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+	justify-content:space-between;
+    align-items:flex-start;
+    box-shadow:0 0 10px 1px #000000;
+    padding:0.5rem;
+    box-sizing:border-box;
+    border-radius:15px;  
+    /*background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.6)) ;*/ 
+    background-color:rgba(33,38,44,0.2);
+}
+/* button and input styling */
+input,
+textarea,select{
+    padding: 4px 10px;
+    background-color:Transparent ;
+    border: none;
+    color: #686868;
+    display: block;
+    line-height: 1.6;
+    font-size: 1.05rem;
+    display:block;
+    width:100%;
+}
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+button[type="submit"]{
+    background-image:linear-gradient(225deg,rgba(238,28,36,0.1),rgba(33,38,44,0.3));
+    font-size: 1.2rem;
+    color:black;
+    line-height: 1.6;
+    padding: 15px 30px;
+    border:none;
+    border-radius:5px;
+    margin-bottom:0.5rem; 
+    font-weight:400;
+    width:220px; 
+    border:1px black solid;
+}
+#deletebtn{
+    background-image:linear-gradient(45deg,rgba(238,28,36,1),rgba(33,38,44,0.7));
+    margin-left:2.5rem; 
+}
+button[type="submit"]:hover{
+    box-shadow:0 0 10px 1px #000000 inset;
+}
+::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+.Block{
+    width:100%;
+}
+.TextinBlock{
+	font-size:1rem;
+    color:white;
+    text-decoration:none;
+    font-family: "Lucida Console", "Courier New", monospace; 
+    font-weight:700;
+    letter-spacing:0.08rem; 
+    /*padding:2px;*/
+    text-align:left; 
+    vertical-align:middle; 
+}
+/*Aside Queue panel for the coming tasks*/
+#Queue{
+    display:flex;
+    width:40%;
+    height:90vh;
+    /*position:relative;*/ 
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+    border-radius:5px; 
+    /*border:1px #55585b solid;*/
+   /* margin-top:1rem;*/
+    box-shadow:0 0 10px 3px #000000 inset;
+    padding:0.5rem;  
+    padding-top:0.3rem;
+    overflow-y:auto;  
+}
+#Queue::-webkit-scrollbar {
+    display: none;
+}
+#Queue{
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+/*its heading*/
+.header{
+    display:flex;
+    height:auto;
+    position:sticky;
+    top:0%;
+    z-index:2;   
+    flex-direction:row;
+    justify-content:space-between; 
+    margin-bottom:1rem;
+    width:96%;
+    padding:0.5rem; 
+    box-shadow:0 0 10px 5px #000000; 
+    background-image:linear-gradient(225deg,rgba(238,28,36,0.4),rgba(33,38,44,0.7)) ; 
+    border-radius:5px;  
+    /*box-shadow:0 0 2px white inset;*/ 
+    box-sizing:border-box;
+    align-items:center !important;
+}
+/*heading of each input field*/
+.headstyle{
+    font-size:1.2rem;
+    color:white;
+    font-family:Sans-serif; 
+    font-weight:400;
+    letter-spacing:0.1rem; 
+    margin:1rem;
+    margin-left:0.6rem;
+    margin-right: 0.6rem;
+    border-bottom:1px #ee1c24 solid;
+}
+/*task boxes of the list*/
+.taskbox{
+    display:flex;
+    height:auto;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between; 
+    margin-bottom:0.7rem;
+    width:96%;
+    padding:0.4rem; 
+    /*background-color:rgba(33,38,44,0.8); */
+    border-radius:15px;  
+    /*box-shadow:0 0 2px white inset;*/ 
+    box-sizing:border-box;
+    align-items:center !important;
+    transition:all 0s ease-in-out; 
+    box-shadow:0 0 10px 1px #000000;
+    background-color:rgba(33,38,44,0.2);
+}
+.taskbox:hover{
+    box-shadow:0 0 10px 3px #000000;
+    background-image:linear-gradient(225deg,rgba(238,28,36,0.1),rgba(33,38,44,0.3)) ;  
+}
+#dele:hover i{
+  color:#ee1c24;
+}
+/* designing of the task */
+#taskName{ 
+    width:60%; 
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+#aboutcat{
+    width:40%;
+    display:flex;
+    box-sizing:border-box;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items: center;
+}
+#abouttask{
+    width:100%;
+    border-top:1px white solid;
+    transition:1s all ease-in-out;
+}
+/* category and the delete btn */
+.catstyle{
+    /* background-image:linear-gradient(225deg,rgba(0,0,0, 0.7),rgba(255,255,255,1)); */
+    background-image:linear-gradient(-25deg,rgba(255,255,255,1),rgba(34, 33, 33, 0.2));
+    font-size:1.2rem;
+    color:black;
+    padding: 10px 30px;
+    border:none;
+    border-radius:5px; 
+    font-weight:400;
+    border:1px grey solid;
+}
+#taskName label{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+}
+.desc{
+    font-size:0.9rem;
+    color:red;
+    font-family:Sans-serif; 
+    font-weight:400;
+    letter-spacing:0.1rem; 
+    border-bottom:1px white solid;
+    width:100px;
+    line-height:2.3rem ;
+    margin-bottom:0.5rem; 
+}
+.taskbox:nth-child(2n+1) .catstyle{
+    background-image:linear-gradient(125deg,rgba(255,255,255,1),rgba(34, 33, 33, 0.2));
 }
