@@ -34,6 +34,9 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+// before every request to check for signedin user details
+app.use(passport.setAuthenticatedUser);
+
 // use routes for the req
 app.use('/',require('./routes/index'));
 app.listen(port,function(error){
