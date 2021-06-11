@@ -29,6 +29,11 @@ nav div{
 	font-size:3rem;
 	color:#ee1c24;
 }
+#right{
+	position:absolute; 
+	right:4rem; 
+	top:1.5rem;
+}
 .TextinNav{
     font-size:1.2rem;
     color:white;

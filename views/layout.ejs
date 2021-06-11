@@ -30,6 +30,15 @@
             <div id="name">
                 <span class="TextinNav">Share</span><br><span class="TextinNav" style="font-weight:700; color:#ee1c24">Express</span>
             </div>
+            <div id="right">
+                <!-- added the header part here -->
+            <% if (locals.user){ %>
+                <a href="/users/profile" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1rem; font-weight:500;color:lightgrey;padding:10px 20px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.05),rgba(33,38,44,0.9));border:1px black solid;margin-right:2rem ;"> <%= user.name %></a>
+                <a href="/users/sign-out" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1rem; font-weight:500;color:lightgrey;padding:10px 20px  ;background-image:linear-gradient(45deg,rgba(238,28,36,0.05),rgba(33,38,44,0.9));border:1px black solid;margin-right:2rem ;">Sign Out</a>
+            <% }else{ %>
+                <a href="/users/sign-in" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1em; font-weight:500;color:lightgrey;padding:10px 20px  ;background-image:linear-gradient(45deg,rgba(238,28,36,0.05),rgba(33,38,44,0.9));border:1px black solid;margin-right:2rem ;">Sign In</a>
+                <a href="/users/sign-up" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1em; font-weight:500;color:lightgrey;padding:10px 20px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.05),rgba(33,38,44,0.9));border:1px black solid;margin-right:2rem ;">Sign Up</a>
+            <% } %>
             </div>
         </nav>
         <!-- body -->
