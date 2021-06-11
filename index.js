@@ -10,6 +10,8 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport =require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+// updated so cant use connect mongo
+const MongoStore = require('connect-mongodb-session')(session);
 
 app.use(expressLayouts); 
 app.use(express.urlencoded());
@@ -21,7 +23,9 @@ app.set('layout extractScripts', true);
 // setup the view engine 
 app.set('view engine', 'ejs');
 app.set('views', './views');
-// using session ans passport middlewware before the routes creates in
+// using session and passport middlewware before the routes creates in
+//mongo store used to store the cookie in the db
+
 app.use(session({
     name: 'ShareExpress',
     // todo change secret before the deployment
@@ -30,7 +34,17 @@ app.use(session({
     resave:false,
     cookie:{
         maxAge:(1000*60*100)
-    }
+    },
+    store: new MongoStore(
+        {
+            mongooseConnection: db,
+            autoRemove: 'disabled'
+        
+        },
+        function(err){
+            console.log(err ||  'connect-mongodb setup ok');
+        }
+    )
 }));
 app.use(passport.initialize());
 app.use(passport.session());
