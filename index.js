@@ -16,8 +16,8 @@ const MongoStore = require('connect-mongodb-session')(session);
 const sassMiddleware = require('node-sass-middleware');
 // use before every as to have all css ready before run of all the files
 app.use(sassMiddleware({
-    src: '/assets/scss',
-    dest: '/assets/css',
+    src: './assets/scss',
+    dest: './assets/css',
     debug: true,
     outputStyle: 'extended',
     prefix: '/css'
