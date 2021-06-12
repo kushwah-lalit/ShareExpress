@@ -12,6 +12,16 @@ const passport =require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 // updated so cant use connect mongo
 const MongoStore = require('connect-mongodb-session')(session);
+// include sass middleware lib
+const sassMiddleware = require('node-sass-middleware');
+// use before every as to have all css ready before run of all the files
+app.use(sassMiddleware({
+    src: '/assets/scss',
+    dest: '/assets/css',
+    debug: true,
+    outputStyle: 'extended',
+    prefix: '/css'
+}));
 
 app.use(expressLayouts); 
 app.use(express.urlencoded());
