@@ -1,11 +1,65 @@
 <link rel="stylesheet" href="/css/home.css">
 <!-- <h1>ShareExpress / <%= title %></h1> -->
-<div id="body" >
-<div id="name" style="text-align: center;margin:5rem; width:100%;">
-<span class="TextinNav" style="font-size: 10rem;">Share</span><br><span class="TextinNav" style="font-weight:700; color:#ee1c24 ;font-size: 10rem;">Express</span>
-</div>
-<div style="text-align:center;width:100%;margin-top:4rem ;">
-    <a href="/users/sign-in" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1.2rem; font-weight:550;color:lightgrey;padding:15px 35px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,0.7));border:1px grey solid;margin-right:3rem ;">Sign In</a>
-    <a href="/users/sign-up" class="TextinBlock catstyle" id="Deselectallbtn" style="font-size:1.2rem; font-weight:550;color:lightgray;padding:15px 35px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,0.7));border:1px grey solid;;">Sign Up</a>		
-</div>
+<div id="body" style="margin-top:0rem;">
+    <% if(locals.user){ %>
+    <form action="/posts/create" method="POST" style="width:50%">
+        <!-- for the task tile -->
+            <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="Posts">
+                        ShareOut
+                    </label>
+                </div>
+                <div class="Block">
+                    <textarea id="Posts" name="content" rows="4" cols="100%" placeholder="Write something about to share..." required="true"></textarea>
+                </div> 
+            </div>
+        <!-- add task and delete task button  -->
+        <div class="boxes" style="justify-content:center;margin-bottom:0rem;">
+            <button type="submit" style="background-image:linear-gradient(45deg,rgba(238,28,36,1),rgba(33,38,44,1));padding:10px 15px;">Post</button>
+        </div>
+        
+    </form>
+    <% } %>
+    <form id="Queue" action="" method="POST" style="width:50%">
+        <!-- Header of List(heading) -->
+            <div class="header">	
+            <div class="headstyle">
+                <i class="fas fa-clipboard-list"></i> Posts
+            </div>
+            <!-- select all and deselect all button -->
+            <!-- <div style="text-align:right">
+                <a href="#" class="TextinBlock catstyle" id="selectallbtn" style="font-size:0.9rem; font-weight:500;color:aliceblue;padding:7px 8px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,1));border:1px white solid;margin-right:0.5rem ;">Select All</a>
+                <a href="#" class="TextinBlock catstyle" id="Deselectallbtn" style="font-size:0.9rem; font-weight:500;color:aliceblue;padding:7px 8px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,1));border:1px white solid;margin-right:0.5rem ;">Deselect All</a>		
+            </div> -->
+            </div>
+            
+            <!-- Each Task Box Repeated Below  using for loop gets data from  the db-->
+            <% for(let post of posts) { %>
+                <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;">
+     
+                    <div id="taskName">
+                        <!-- checkbox to select -->
+                        <!-- <input type="checkbox" style="width:10%" value="<%= post._id %>" name="task"> -->
+                        <!-- task title and the date -->
+                        <div>
+                            <span class="TextinBlock name " style="line-height:2rem;text-decoration:#ee1c24 underline;text-underline-offset:3px ;"><%= post.content %></span><br><span class="TextinBlock" style="font-size:0.8rem; font-weight:400 "><i class="far fa-calendar-alt" style="color:#ee1c24 ;"></i> <%= new Date(post.createdAt).toDateString(); %></span>
+                        </div> 
+                    </div> 
+                    <div id="aboutcat">
+                        
+                        <p class="catstyle"><%= post.user.name %></p>
+                        <!-- <a id="dele" type="radio" class="mybutton" href="/delete-single-task/?Id=<%= post._id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> -->
+                    </div>
+                    <!-- <div id="abouttask">
+                    
+                        <div class="desc">
+                            Description:
+                        </div>
+                        <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span>
+                    </div>        -->
+                </div>
+            <% } %>
+        </form>
+
 </div>
