@@ -54,7 +54,7 @@
                     <div id="abouttask" style="border-top:none;">
                         <!-- form to take comments -->
                         <% if(locals.user){ %>
-                            <form action="/comments/create" method="POST" >
+                            <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" >
                                 <!-- for the task tile -->
                                     <div id="tasktitle">
                                         <!-- <div class="headstyle">
@@ -68,17 +68,33 @@
                                         </div> 
                                     </div>
                                 <!-- add task and delete task button  -->
-                                <div class="boxes" style="justify-content:center;margin:0rem;">
+                                <div class="boxes" style="justify-content:center;margin:none;">
                                     <button type="submit" style="background-image:linear-gradient(45deg,rgba(238,28,36,1),rgba(33,38,44,1));padding:5px 1px;">Add Comment</button>
                                 </div>
                                 
                             </form>
                             <% } %>
-                        <!-- <div class="desc">
-                            Comments:
-                        </div> -->
-                        <!-- <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span> -->
-                    </div>       
+                            <div class="desc">
+                                Comments:
+                            </div>
+                            <!-- <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span> -->
+                    </div>
+                    <% for (comment of post.comments){%>
+                        <div id="taskName">
+                            <!-- checkbox to select -->
+                            <!-- <input type="checkbox" style="width:10%" value="<%= post._id %>" name="task"> -->
+                            <!-- task title and the date -->
+                            <div>
+                                <span class="TextinBlock name " style="line-height:1rem;text-underline-offset:3px ;size:1rem;font-weight: 400;">-> <%= comment.content %></span></div> 
+                        </div> 
+                        <div id="aboutcat">
+                            
+                            <p class="catstyle" style="background-image:linear-gradient(-25deg,rgb(192, 16, 16),rgba(34, 33, 33, 0.2));font-size:1rem;color:black;padding:8px 14px;color:white !important;"><%= comment.user.name %></p>
+                            <!-- <a id="dele" type="radio" class="mybutton" href="/delete-single-task/?Id=<%= post._id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> -->
+                        </div>      
+                          
+                    <%} %>
+                          
                 </div>
             <% } %>
             </div>

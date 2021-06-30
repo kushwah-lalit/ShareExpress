@@ -293,10 +293,6 @@ button[type="submit"]:hover {
   box-shadow: 0 0 10px 1px #000000;
   background-color: rgba(33, 38, 44, 0.2); }
 
-.taskbox:hover {
-  box-shadow: 0 0 10px 3px #000000;
-  background-image: linear-gradient(225deg, rgba(238, 28, 36, 0.1), rgba(33, 38, 44, 0.3)); }
-
 #dele:hover i {
   color: #ee1c24; }
 
