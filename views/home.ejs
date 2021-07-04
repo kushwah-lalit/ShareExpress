@@ -49,8 +49,10 @@
                     <div id="aboutcat">
                         
                         <p class="catstyle"><%= post.user.name %></p>
-                        <!-- <a id="dele" type="radio" class="mybutton" href="/delete-single-task/?Id=<%= post._id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> -->
-                    </div>
+                        <% if (locals.user && locals.user.id == post.user.id){ %>
+                             <a id="dele" type="radio" class="mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+                        <% } %>
+                       </div>
                     <div id="abouttask" style="border-top:none;">
                         <!-- form to take comments -->
                         <% if(locals.user){ %>
@@ -90,8 +92,10 @@
                         <div id="aboutcat">
                             
                             <p class="catstyle" style="background-image:linear-gradient(-25deg,rgb(192, 16, 16),rgba(34, 33, 33, 0.2));font-size:1rem;color:black;padding:8px 14px;color:white !important;"><%= comment.user.name %></p>
-                            <!-- <a id="dele" type="radio" class="mybutton" href="/delete-single-task/?Id=<%= post._id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> -->
-                        </div>      
+                            <% if (locals.user && locals.user.id == comment.user.id){ %>
+                                <a id="dele" type="radio" class="mybutton" href="/comments/destroy/<%= comment.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a>
+                            <% } %>
+                            </div>      
                           
                     <%} %>
                           
