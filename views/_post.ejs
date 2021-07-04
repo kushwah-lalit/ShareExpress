@@ -1,0 +1,79 @@
+  <!-- Header of List(heading) -->
+  <div class="header">	
+    <div class="headstyle">
+        <i class="fas fa-clipboard-list"></i> Posts
+    </div>
+    <!-- select all and deselect all button -->
+    <!-- <div style="text-align:right">
+        <a href="#" class="TextinBlock catstyle" id="selectallbtn" style="font-size:0.9rem; font-weight:500;color:aliceblue;padding:7px 8px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,1));border:1px white solid;margin-right:0.5rem ;">Select All</a>
+        <a href="#" class="TextinBlock catstyle" id="Deselectallbtn" style="font-size:0.9rem; font-weight:500;color:aliceblue;padding:7px 8px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,1));border:1px white solid;margin-right:0.5rem ;">Deselect All</a>		
+    </div> -->
+    </div>
+    
+    <!-- Each Task Box Repeated Below  using for loop gets data from  the db-->
+    <% for(let post of posts) { %>
+        <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;">
+    
+            <div id="taskName">
+                <!-- checkbox to select -->
+                <!-- <input type="checkbox" style="width:10%" value="<%= post._id %>" name="task"> -->
+                <!-- task title and the date -->
+                <div>
+                    <span class="TextinBlock name " style="line-height:2rem;text-decoration:#ee1c24 underline;text-underline-offset:3px ;"><%= post.content %></span><br><span class="TextinBlock" style="font-size:0.8rem; font-weight:400 "><i class="far fa-calendar-alt" style="color:#ee1c24 ;"></i> <%= new Date(post.createdAt).toDateString(); %></span>
+                </div> 
+            </div> 
+            <div id="aboutcat">
+                
+                <p class="catstyle"><%= post.user.name %></p>
+                <% if (locals.user && locals.user.id == post.user.id){ %>
+                     <a id="dele" type="radio" class="mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+                <% } %>
+            </div>
+            <div id="abouttask" style="border-top:none;">
+                <!-- form to take comments -->
+                <% if(locals.user){ %>
+                    <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" >
+                        <!-- for the task tile -->
+                            <div id="tasktitle">
+                                <!-- <div class="headstyle">
+                                    <label for="Posts">
+                                        Make Comment
+                                    </label>
+                                </div> -->
+                                <div class="Block">
+                                    <input type="text" id="Posts" name="content" rows="1" placeholder="Comment here on the above post..." required="true"></textarea>
+                                    <input type="hidden" name="post" value="<%= post._id %>" >
+                                </div> 
+                            </div>
+                        <!-- add task and delete task button  -->
+                        <div class="boxes" style="justify-content:center;margin:none;">
+                            <button type="submit" style="background-image:linear-gradient(45deg,rgba(238,28,36,1),rgba(33,38,44,1));padding:5px 1px;">Add Comment</button>
+                        </div>
+                        
+                    </form>
+                    <% } %>
+                    <div class="desc">
+                        Comments:
+                    </div>
+                    <!-- <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span> -->
+            </div>
+            <% for (comment of post.comments){%>
+                <div id="taskName">
+                    <!-- checkbox to select -->
+                    <!-- <input type="checkbox" style="width:10%" value="<%= post._id %>" name="task"> -->
+                    <!-- task title and the date -->
+                    <div>
+                        <span class="TextinBlock name " style="line-height:1rem;text-underline-offset:3px ;size:1rem;font-weight: 400;">-> <%= comment.content %></span></div> 
+                </div> 
+                <div id="aboutcat">
+                    
+                    <p class="catstyle" style="background-image:linear-gradient(-25deg,rgb(192, 16, 16),rgba(34, 33, 33, 0.2));font-size:1rem;color:black;padding:8px 14px;color:white !important;"><%= comment.user.name %></p>
+                    <% if (locals.user && locals.user.id == comment.user.id){ %>
+                        <a id="dele" type="radio" class="mybutton" href="/comments/destroy/<%= comment.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a>
+                    <% } %>
+                </div>   
+                  
+            <%} %>
+                  
+        </div>
+    <% } %>
