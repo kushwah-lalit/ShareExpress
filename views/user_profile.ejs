@@ -1,9 +1,11 @@
 <!-- <link rel="stylesheet" href="/css/users_profile.css">
 <h1>ShareExpress / <%= title %></h1> -->
 <div id="body" style="margin-top:8rem;">
+    <% if(user.id != profile_user.id){ %>
     <div id="name" style="margin:5rem; width:50%;">
         <span class="TextinNav" style="font-size: 10rem;">Share</span><br><span class="TextinNav" style="font-weight:700; color:#ee1c24 ;font-size: 10rem;">Express</span>
     </div>
+    <%} %>
     <form style="margin-top: 5rem;width:30%;height:350px">
         <!-- for the task tile -->
             <div id="tasktitle">
@@ -28,7 +30,61 @@
                 </div>
             </div>
             <div class="boxes" style="justify-content:center;margin-top:3rem;">
-                <a href="/users/sign-out" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1.2rem; font-weight:550;color:lightgrey;padding:15px 35px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,0.7));border:1px grey solid;margin-right:3rem ;">Sign Out</a>
+                <a href="/" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1.2rem; font-weight:550;color:lightgrey;padding:15px 35px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,0.7));border:1px grey solid;margin-right:3rem ;">Return</a>
             </div>
     </form>  
+    <!-- update only to signed in user -->
+    <% if(user.id == profile_user.id){ %>
+    <form action="/users/update/<%= profile_user.id %>" method="POST" style="width:30%;margin-top:5rem;">
+        <!-- name -->
+        <div id="tasktitle">
+            <div class="headstyle">
+                <label for="naam">
+                   New Name
+                </label>
+            </div>
+            <div class="Block">
+                <input type="text" required="true" placeholder="What's your new Name?" id="naam" name="name">
+            </div>  
+        </div>
+        <!-- for the task tile -->
+            <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="titles">
+                       New E-Mail ID
+                    </label>
+                </div>
+                <div class="Block">
+                    <input type="email" required="true" placeholder="Enter your new E-mail Address" id="titles" name="email">
+                </div>  
+            </div>
+            <!-- for the task description -->
+            <!-- <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="Describe">
+                        Password
+                    </label>
+                </div>
+                <div class="Block">
+                    <input type="password" required="true" placeholder="Enter your E-mail Password" id="Describe" name="password">
+                </div>
+            </div> -->
+             <!-- for the task description -->
+             <!-- <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="confirm">
+                        Confirm Password
+                    </label>
+                </div>
+                <div class="Block">
+                    <input type="password" required="true" placeholder="Confirm your E-mail Password" id="confirm" name="confirmpassword">
+                </div>
+            </div> -->
+        <!-- add task and delete task button  -->
+        <div class="boxes" style="justify-content:center; margin-top:3rem;">
+            <button type="submit">Update</button>
+        </div>
+        
+    </form>
+    <%} %>
 </div>

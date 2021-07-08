@@ -11,6 +11,16 @@ module.exports.profile=function(req,res){
         });
     });
 };
+// upadte the user
+module.exports.update = function(req, res){
+    if(req.user.id == req.params.id){
+        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            return res.redirect('back');
+        });
+    }else{
+        return res.status(401).send('Unauthorized');
+    }
+}
 // render the sign up page
 module.exports.signUp = function(req, res){
     if (req.isAuthenticated()){
@@ -26,7 +36,7 @@ module.exports.signUp = function(req, res){
 // render the sign in page
 module.exports.signIn = function(req, res){
     if (req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
     return res.render('user_signIn', {
         title: "ShareExpress | Sign In"
@@ -62,7 +72,7 @@ module.exports.create = function(req, res){
 
 // // sign in and create a session for the user
 module.exports.createSession = function(req, res){
-    return res.redirect('/users/profile');
+    return res.redirect('/');
 }
 // signout
 module.exports.destroySession = function(req, res){

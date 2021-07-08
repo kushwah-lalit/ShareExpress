@@ -6,6 +6,7 @@ const passport = require('passport');
 const userController = require('../controllers/users_controller');
 console.log('Router file working');
 router.get('/profile/:id', passport.checkAuthentication,userController.profile);
+router.post('/update/:id', passport.checkAuthentication,userController.update);
 router.get('/sign-up', userController.signUp);
 router.get('/sign-in', userController.signIn);
 router.post('/create', userController.create); 
