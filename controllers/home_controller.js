@@ -58,7 +58,7 @@ module.exports.home= async function(req,res){
         let users = await User.find({});
 
         return res.render('home', {
-            title: "ShareExpress| Home",
+            title: "ShareExpress | Home",
             posts:  posts,
             all_users: users
         });
