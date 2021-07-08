@@ -1,8 +1,12 @@
 <link rel="stylesheet" href="/css/home.css">
 <!-- <h1>ShareExpress / <%= title %></h1> -->
 <div id="body" style="margin-top:0rem;">
+    <div id="Queue"  style="width:25%;box-shadow: none;">
+        <!-- empty -->
+    </div>
+    <div style="display:flex;flex-direction:column;justify-content: space-around;width:45%;">
     <% if(locals.user){ %>
-    <form action="/posts/create" method="POST" style="width:50%">
+    <form action="/posts/create" method="POST" style="width:95%">
         <!-- for the task tile -->
             <div id="tasktitle">
                 <div class="headstyle">
@@ -11,7 +15,7 @@
                     </label>
                 </div>
                 <div class="Block">
-                    <textarea id="Posts" name="content" rows="4" cols="100%" placeholder="Write something about to share..." required="true"></textarea>
+                    <textarea id="Posts" name="content" rows="3" cols="100%" placeholder="Write something about to share..." required="true"></textarea>
                 </div> 
             </div>
         <!-- add task and delete task button  -->
@@ -21,8 +25,28 @@
         
     </form>
     <% } %>
-    <div id="Queue"  style="width:50%">
+    <div id="Queue"  style="width:95%">
         <%- include('_post');%>
     </div>
-
+    </div>
+    <!-- right part -->
+    <div id="Queue"  style="width:25%;box-shadow: none;">
+        <div class="header">	
+            <div class="headstyle">
+                <i class="fas fa-clipboard-list"></i> Friends
+            </div>
+        </div>  
+            <% for(u of all_users){%>
+                <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;">
+    
+                    <div id="taskName">
+                    
+                        <div>
+                            <a class="TextinBlock name " style="line-height:2rem;text-decoration:#ee1c24 underline;text-underline-offset:3px ;" href="/users/profile/<%= u.id %>"><%= u.name %></a>
+                        </div> 
+                    </div>
+                </div>
+            <% } %>
+        
+    </div>
 </div>
