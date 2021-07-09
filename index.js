@@ -14,6 +14,9 @@ const passportLocal = require('./config/passport-local-strategy');
 const MongoStore = require('connect-mongodb-session')(session);
 // include sass middleware lib
 const sassMiddleware = require('node-sass-middleware');
+// including flash and the middleware to setup the flash message to local
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
 // use before every as to have all css ready before run of all the files
 app.use(sassMiddleware({
     src: './assets/scss',
@@ -60,7 +63,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 // before every request to check for signedin user details
 app.use(passport.setAuthenticatedUser);
-
+// using flash and the our middleware function after the session as we want it after the session as flash message gets installed in the sesssion cookie
+app.use(flash());
+app.use(customMware.setFlash);
 // use routes for the req
 app.use('/',require('./routes/index'));
 app.listen(port,function(error){

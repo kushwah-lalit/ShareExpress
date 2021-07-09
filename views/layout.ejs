@@ -42,6 +42,12 @@
             <% } %>
             </div>
         </nav>
+        <!-- flash message in layout as will work for all -->
+        <% if(flash.success && flash.success.length > 0){ %>
+            <h5 style="color: cyan;">
+                <%= flash.success %>
+            </h5>    
+        <% } %>
         <!-- body -->
         <%- body%>
         <!-- doing the footer like as told...head made itself in the layout -->
