@@ -6,7 +6,7 @@
     </div>
     <div style="display:flex;flex-direction:column;justify-content: space-around;width:45%;">
     <% if(locals.user){ %>
-    <form action="/posts/create" method="POST" style="width:95%">
+    <form action="/posts/create" method="POST" style="width:95%" id="new-post-form">
         <!-- for the task tile -->
             <div id="tasktitle">
                 <div class="headstyle">
@@ -50,3 +50,4 @@
         
     </div>
 </div>
+<script src="/js/home_posts.js"></script>
