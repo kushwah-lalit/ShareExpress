@@ -14,6 +14,7 @@
     <!-- Each Task Box Repeated Below  using for loop gets data from  the db-->
     <ul style="padding-left:1.1rem;margin-top: 0px;margin-right: 0px;padding-right: 0px;">
     <% for(let post of posts) { %>
+        <li>
         <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;" id="post-<%= post._id %>">
     
             <div id="taskName">
@@ -28,7 +29,7 @@
                 
                 <p class="catstyle"><%= post.user.name %></p>
                 <% if (locals.user && locals.user.id == post.user.id){ %>
-                     <a id="dele" type="radio" class="mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+                     <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
                 <% } %>
             </div>
             <div id="abouttask" style="border-top:none;">
@@ -78,6 +79,7 @@
             <%} %>
                   
         </div>
+        </li>
     <% } %>
     </ul>
   
