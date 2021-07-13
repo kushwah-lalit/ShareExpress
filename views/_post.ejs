@@ -1,3 +1,4 @@
+<div id="Queue"  style="width:95%" class="posts-list-container">
   <!-- Header of List(heading) -->
   <div class="header">	
     <div class="headstyle">
@@ -11,8 +12,9 @@
     </div>
     
     <!-- Each Task Box Repeated Below  using for loop gets data from  the db-->
+    <ul style="padding-left:1.1rem;margin-top: 0px;margin-right: 0px;padding-right: 0px;">
     <% for(let post of posts) { %>
-        <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;">
+        <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;" id="post-<%= post._id %>">
     
             <div id="taskName">
                 <!-- checkbox to select -->
@@ -77,3 +79,6 @@
                   
         </div>
     <% } %>
+    </ul>
+  
+</div>
