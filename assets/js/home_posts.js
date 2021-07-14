@@ -22,7 +22,7 @@
                 // call the create comment class
                 // new PostComments(data.data.post._id);
                     new Noty({
-                        theme: 'relax',
+                        theme: 'sunset',
                         text: "Post published!",
                         type: 'success',
                         layout: 'topRight',
@@ -38,30 +38,27 @@
     };
     // method to create a post in DOM
     let newPostDom = function(post){
-        return $(`<div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;" id="post-${ post._id }">
+        return $(`<div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;" id="post-${post._id}">
+    
         <div id="taskName">
-           
+         
             <div>
-                <span class="TextinBlock name " style="line-height:2rem;text-decoration:#ee1c24 underline;text-underline-offset:3px ;">${ post.content}</span><br><span class="TextinBlock" style="font-size:0.8rem; font-weight:400 "><i class="far fa-calendar-alt" style="color:#ee1c24 ;"></i> ${ new Date(post.createdAt).toDateString()}</span>
+                <span class="TextinBlock name " style="line-height:2rem;text-decoration:#ee1c24 underline;text-underline-offset:3px ;">${post.content}</span><br><span class="TextinBlock" style="font-size:0.8rem; font-weight:400 "><i class="far fa-calendar-alt" style="color:#ee1c24 ;"></i> ${new Date(post.createdAt).toDateString()}</span>
             </div> 
         </div> 
         <div id="aboutcat">
             
-            <p class="catstyle">${ post.user.name }</p>
-            <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/${post._id}"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+            <p class="catstyle">${post.user.name}</p>
            
+                 <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/${post._id}"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+     
         </div>
-        <div id="abouttask" style="border-top:none;">
+        <div id="abouttask" style="border-top:none;" class="post-comments">
             <!-- form to take comments -->
            
-                <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" >
-                    <!-- for the task tile -->
+                <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" id="new-comment-form" >
+                   
                         <div id="tasktitle">
-                            <!-- <div class="headstyle">
-                                <label for="Posts">
-                                    Make Comment
-                                </label>
-                            </div> -->
                             <div class="Block">
                                 <input type="text" id="Posts" name="content" rows="1" placeholder="Comment here on the above post..." required="true"></textarea>
                                 <input type="hidden" name="post" value="${post._id}" >
@@ -73,11 +70,14 @@
                     </div>
                     
                 </form>
+              
                 <div class="desc">
                     Comments:
                 </div>
-                 </div>
-        
+                <!-- <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span> -->
+        </div>
+        <ul style="padding-left:1.1rem;margin-top: 0px;margin-right: 0px;padding-right: 0px;width: 100%;" id="post-comments-list">
+        </ul>
               
     </div>`)
     }
@@ -93,7 +93,7 @@
                 success: function(data){
                     $(`#post-${data.data.post_id}`).remove();
                     new Noty({
-                        theme: 'relax',
+                        theme: 'sunset',
                         text: "Post Deleted",
                         type: 'success',
                         layout: 'topRight',
@@ -108,23 +108,28 @@
         });
     }
     // loop over all the existing posts on the page (when the window loads for the first time) and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
-    let convertPostsToAjax = function(){
-        $('.posts-list-container>ul>li').each(function(){
-            let self = $(this);
-            let deleteButton = $(' .delete-post-button', self);
-            deletePost(deleteButton);
+    // let convertPostsToAjax = function(){
+    //     $('.posts-list-container>ul').each(function(){
+    //         let self = $(this);
+    //         let deleteButton = $(' .delete-post-button', self);
+    //         deletePost(deleteButton);
 
-            // get the post's id by splitting the id attribute
-            // let postId = self.prop('id').split("-")[1]
-            // new PostComments(postId);
-        });
-    }
-
-
-
+    //         // get the post's id by splitting the id attribute
+    //         let postId = self.prop('id').split("-")[1];
+    //         console.log(postId);
+    //         new PostComments(postId);
+    // });
+    // }
+    let convertPostToAjax = function () {
+        let deleteLinks = $('.delete-post-button');
+        for (deleteLink of deleteLinks) {
+            deletePost(deleteLink);
+        }
+    };
+        //   convertPostToAjax();
+        
+        
     createPost();
-    convertPostsToAjax();
+    convertPostToAjax();
     
-
-
 }

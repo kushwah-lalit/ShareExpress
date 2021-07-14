@@ -14,7 +14,6 @@
     <!-- Each Task Box Repeated Below  using for loop gets data from  the db-->
     <ul style="padding-left:1.1rem;margin-top: 0px;margin-right: 0px;padding-right: 0px;">
     <% for(let post of posts) { %>
-        <li>
         <div class="taskbox" style="padding-left:1rem ;padding-right:1rem ;" id="post-<%= post._id %>">
     
             <div id="taskName">
@@ -32,10 +31,10 @@
                      <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
                 <% } %>
             </div>
-            <div id="abouttask" style="border-top:none;">
+            <div id="abouttask" style="border-top:none;" class="post-comments">
                 <!-- form to take comments -->
                 <% if(locals.user){ %>
-                    <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" >
+                    <form action="/comments/create" method="POST" style="margin-bottom:-4rem;" id="new-comment-form" >
                         <!-- for the task tile -->
                             <div id="tasktitle">
                                 <!-- <div class="headstyle">
@@ -60,7 +59,10 @@
                     </div>
                     <!-- <span class="TextinBlock" style="font-size:0.9rem; font-weight:400;"><%= post.taskdescription %></p></span> -->
             </div>
+            <ul style="padding-left:1.1rem;margin-top: 0px;margin-right: 0px;padding-right: 0px;width: 100%;" id="post-comments-list">
             <% for (comment of post.comments){%>
+            
+            <li style="width: 100%;display: flex;" id="comment-<%= comment._id %>">
                 <div id="taskName">
                     <!-- checkbox to select -->
                     <!-- <input type="checkbox" style="width:10%" value="<%= post._id %>" name="task"> -->
@@ -72,14 +74,17 @@
                     
                     <p class="catstyle" style="background-image:linear-gradient(-25deg,rgb(192, 16, 16),rgba(34, 33, 33, 0.2));font-size:1rem;color:black;padding:8px 14px;color:white !important;"><%= comment.user.name %></p>
                     <% if (locals.user && locals.user.id == comment.user.id){ %>
-                        <a id="dele" type="radio" class="mybutton" href="/comments/destroy/<%= comment.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a>
+                        <a id="dele" type="radio" class="delete-comment-btn mybutton" href="/comments/destroy/<%= comment.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a>
                     <% } %>
-                </div>   
+                </div> 
+            </li>
+               
+            
                   
             <%} %>
+            </ul>
                   
         </div>
-        </li>
     <% } %>
     </ul>
   
