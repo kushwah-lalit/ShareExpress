@@ -1,4 +1,6 @@
 const User =require('../models/user');
+const fs = require('fs');
+const path = require('path');
 module.exports.profile=function(req,res){
     // return res.end('<h1>User lalit here :-)</h1>');
     // return res.render('user_profile',{
@@ -12,12 +14,44 @@ module.exports.profile=function(req,res){
     });
 };
 // update the user
-module.exports.update = function(req, res){
+module.exports.update = async function(req, res){
+    // if(req.user.id == req.params.id){
+    //     User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+            // req.flash('success', 'Updated!');
+            // return res.redirect('back');
+    //     });
+    // }else{
+        // req.flash('error', 'Unauthorized!');
+        // return res.status(401).send('Unauthorized');
+    // }
     if(req.user.id == req.params.id){
-        User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
-            req.flash('success', 'Updated!');
+        try{
+            let user = await User.findById(req.params.id);
+            User.uploadedAvatar( req, res, function(err){
+                if(err){
+                    console.log('Multer Error :',err);
+                }
+                // we wont be able to read the form details as form is multipart...so this statci helps us
+                console.log(req.file);
+                user.name = req.body.name;
+                user.email = req.body.email;
+                // if there is any file uploaded
+                if(req.file){
+                    if(user.avatar){
+                        fs.unlinkSync(path.join(__dirname, '..' , user.avatar));
+                    }
+                    // this will saving the address or path in the user avtar key
+                    user.avatar = User.avatarPath + '/' + req.file.filename;
+                }
+                user.save();
+                req.flash('success', 'Updated!');
+                return res.redirect('back');
+            });
+
+        }catch(err){
+            req.flash('error', err);
             return res.redirect('back');
-        });
+        }
     }else{
         req.flash('error', 'Unauthorized!');
         return res.status(401).send('Unauthorized');

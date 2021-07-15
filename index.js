@@ -25,11 +25,14 @@ app.use(sassMiddleware({
     outputStyle: 'extended',
     prefix: '/css'
 }));
+// to make upload path available to the browser
+app.use('/uploads',express.static(__dirname + '/uploads'));
 
 app.use(expressLayouts); 
 app.use(express.urlencoded());
 app.use(cookieParser());
 // Putting the styles and scripts from pages to the correct place in the layout file
+
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 

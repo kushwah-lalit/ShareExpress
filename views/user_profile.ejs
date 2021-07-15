@@ -6,7 +6,17 @@
         <span class="TextinNav" style="font-size: 10rem;">Share</span><br><span class="TextinNav" style="font-weight:700; color:#ee1c24 ;font-size: 10rem;">Express</span>
     </div>
     <%} %>
-    <form style="margin-top: 5rem;width:30%;height:350px">
+    <div style="width:30%;display: flex;flex-direction:column;align-items: center;">
+    <div class="circles" style="width:40%">
+        <div class="circularimg">
+            <img src="<%= user.avatar %>" alt="<%= user.name %>">
+        </div>
+        <div>
+        <br>
+        <span class="TextinBlock" style="font-size:0.9rem; font-weight:500;"><%= user.name%></span>
+        </div>
+    </div>
+    <form style="margin-top:1rem;width:100%;height:350px">
         <!-- for the task tile -->
             <div id="tasktitle">
                 <div class="headstyle">
@@ -32,10 +42,11 @@
             <div class="boxes" style="justify-content:center;margin-top:3rem;">
                 <a href="/" class="TextinBlock catstyle" id="selectallbtn" style="font-size:1.2rem; font-weight:550;color:lightgrey;padding:15px 35px ;background-image:linear-gradient(45deg,rgba(238,28,36,0.6),rgba(33,38,44,0.7));border:1px grey solid;margin-right:3rem ;">Return</a>
             </div>
-    </form>  
+    </form>
+    </div>  
     <!-- update only to signed in user -->
     <% if(user.id == profile_user.id){ %>
-    <form action="/users/update/<%= profile_user.id %>" method="POST" style="width:30%;margin-top:5rem;">
+    <form action="/users/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data" style="width:30%;margin-top:5rem;">
         <!-- name -->
         <div id="tasktitle">
             <div class="headstyle">
@@ -56,6 +67,16 @@
                 </div>
                 <div class="Block">
                     <input type="email" required="true" placeholder="Enter your new E-mail Address" id="titles" name="email">
+                </div>  
+            </div>
+            <div id="tasktitle">
+                <div class="headstyle">
+                    <label for="titles">
+                       Upload Profile Picture
+                    </label>
+                </div>
+                <div class="Block">
+                    <input type="file" name="avatar"  placeholder="Profile Picture" id="titles">
                 </div>  
             </div>
             <!-- for the task description -->

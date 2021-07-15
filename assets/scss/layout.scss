@@ -356,3 +356,24 @@ button[type="submit"]:hover{
 .taskbox:nth-child(2n+1) .catstyle{
     background-image:linear-gradient(125deg,rgba(255,255,255,1),rgba(34, 33, 33, 0.2));
 }
+// for avatars
+.circles{
+    display:flex;
+    width:15%;
+    height:auto;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;  
+}
+.circularimg{
+    width:180px;
+    height:180px;
+    position:relative;
+}
+.circularimg img{
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    box-shadow:0 0 3px white; 
+    object-fit:cover;
+}
