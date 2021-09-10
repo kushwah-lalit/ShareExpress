@@ -21,7 +21,11 @@
                 deletePost($(' .delete-post-button', newPost));
                 // call the create comment class
                 // new PostComments(data.data.post._id);
-                    new Noty({
+                
+                // CHANGE :: enable the functionality of the toggle like button on the new post
+                new ToggleLike($(' .toggle-like-button', newPost));
+                    
+                new Noty({
                         theme: 'sunset',
                         text: "Post published!",
                         type: 'success',
@@ -51,6 +55,9 @@
             <p class="catstyle">${post.user.name}</p>
            
                  <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/${post._id}"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
+                 <a class="toggle-like-button mybutton" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                 <span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; ">0<i class="fas fa-heart"></i></span>
+                </a>
      
         </div>
         <div id="abouttask" style="border-top:none;" class="post-comments">

@@ -30,6 +30,13 @@
                 <% if (locals.user && locals.user.id == post.user.id){ %>
                      <a id="dele" type="radio" class="delete-post-button mybutton" href="/posts/destroy/<%= post.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a> 
                 <% } %>
+                <% if (locals.user){ %>
+                    <a class="toggle-like-button mybutton" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+                        <span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><%= post.likes.length %><i class="fas fa-heart"></i></span>
+                    </a>
+                <% }else{ %>
+                    <span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><%= post.likes.length %><i class="fas fa-heart"></i></span>
+                <% } %>
             </div>
             <div id="abouttask" style="border-top:none;" class="post-comments">
                 <!-- form to take comments -->
@@ -76,6 +83,15 @@
                     <% if (locals.user && locals.user.id == comment.user.id){ %>
                         <a id="dele" type="radio" class="delete-comment-btn mybutton" href="/comments/destroy/<%= comment.id %>"><span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><i class="fas fa-trash-alt"></i></span></a>
                     <% } %>
+                 
+                    <% if (locals.user){ %>
+                        <a class="toggle-like-button mybutton" data-likes="<%= comment.likes.length %>" href="/likes/toggle/?id=<%=comment._id%>&type=Comment">
+                            <span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><%= comment.likes.length %><i class="fas fa-heart"></i></span>
+                        </a>
+                    <% }else{ %>
+                        <span class="TextinBlock" style="font-size:0.8rem; font-weight:400; margin:1rem; "><%= comment.likes.length %><i class="fas fa-heart"></i></span>
+                    <% } %>
+                    
                 </div> 
             </li>
                
