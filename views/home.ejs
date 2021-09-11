@@ -1,8 +1,10 @@
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/chat_box.css">
 <!-- <h1>ShareExpress / <%= title %></h1> -->
 <div id="body" style="margin-top:0rem;">
-    <div id="Queue"  style="width:25%;box-shadow: none;">
+    <div id="Queue"  style="width:30%;box-shadow: none;">
         <!-- empty -->
+        <%- include('_chat_box') -%>
     </div>
     <div style="display:flex;flex-direction:column;justify-content: space-around;width:45%;">
     <% if(locals.user){ %>
@@ -30,7 +32,7 @@
     
     </div>
     <!-- right part -->
-    <div id="Queue"  style="width:25%;box-shadow: none;">
+    <div id="Queue"  style="width:20%;box-shadow: none; ">
         <div class="header">	
             <div class="headstyle">
                 <i class="fas fa-clipboard-list"></i> Friends
@@ -47,7 +49,6 @@
                     </div>
                 </div>
             <% } %>
-        
     </div>
 </div>
 <script src="/js/home_post_comments.js"></script>
