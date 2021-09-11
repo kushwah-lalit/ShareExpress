@@ -55,12 +55,23 @@ module.exports.home= async function(req,res){
             populate: {
                 path: 'user'
             },
-            populate: {
-                path: 'likes'
-            }
-        })
-
-        .populate('likes');
+            // populate: {
+            //     path: 'likes'
+            // }
+        });
+        // .populate('likes');
+        // .sort('-createdAt')
+        // .populate('user')
+        // .populate({
+        //     path: 'comments',
+        //     populate: {
+        //         path: 'user'
+        //     },
+        //     populate: {
+        //         path: 'likes'
+        //     }
+        // }).populate('comments')
+        // .populate('likes');
 
         let users = await User.find({});
 
