@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/ShareExpress_development');
+const env = require('./environment');
+mongoose.connect(`mongodb://localhost/${env.db}`);
+
+// mongoose.connect('mongodb://localhost/ShareExpress_development');@@@
 
 const db = mongoose.connection;
 
