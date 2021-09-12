@@ -1,0 +1,20 @@
+[0mGET / [36m304[0m 47.569 ms - -[0m
+[0mGET / [36m304[0m 18.221 ms - -[0m
+[0mGET /users/sign-in [36m304[0m 4.014 ms - -[0m
+[0mPOST /users/create-session [36m302[0m 24.026 ms - 46[0m
+[0mGET / [32m200[0m 17.092 ms - 28744[0m
+[0mPOST /comments/create [32m200[0m 21.194 ms - 320[0m
+[0mGET / [32m200[0m 18.049 ms - 29982[0m
+::1 - - [12/Sep/2021:13:46:49 +0000] "GET / HTTP/1.1" 200 22412 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+::1 - - [12/Sep/2021:13:46:51 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+::1 - - [12/Sep/2021:13:46:53 +0000] "GET /users/sign-in HTTP/1.1" 304 - "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+::1 - - [12/Sep/2021:13:46:59 +0000] "POST /users/create-session HTTP/1.1" 302 46 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+::1 - - [12/Sep/2021:13:46:59 +0000] "GET / HTTP/1.1" 200 30382 "http://localhost:8000/users/sign-in" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
+[0mGET / [32m200[0m 50.020 ms - 22412[0m
+[0mGET / [36m304[0m 30.465 ms - -[0m
+[0mGET / [36m304[0m 46.214 ms - -[0m
+[0mGET / [36m304[0m 16.968 ms - -[0m
+[0mGET / [36m304[0m 16.136 ms - -[0m
+[0mGET / [36m304[0m 15.711 ms - -[0m
+[0mGET / [36m304[0m 13.734 ms - -[0m
+[0mGET / [36m304[0m 19.047 ms - -[0m

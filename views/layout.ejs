@@ -5,7 +5,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- icon -->
-    <link rel ="icon" href="/images/Screenshot 2021-06-05 at 9.02.29 PM 1.png" type = "image/x-icon" sizes="32x32" >
+    <link rel ="icon" href="<%= assetPath('images/Screenshot 2021-06-05 at 9.02.29 PM 1.png') %>" type = "image/x-icon" sizes="32x32" >
     <!-- cdn for noty -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
@@ -18,8 +18,10 @@
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- home style css -->
-    <link rel="stylesheet" href="/css/layout.css">
-    <link rel="stylesheet" href="/css/footer.css">
+    <!-- <link rel="stylesheet" href="/css/layout.css">
+    <link rel="stylesheet" href="/css/footer.css"> -->
+    <link rel="stylesheet" href="<%= assetPath('css/layout.css') %>">
+    <link rel="stylesheet" href="<%= assetPath('css/footer.css') %>">
     <%- style%>
 
     </head>
